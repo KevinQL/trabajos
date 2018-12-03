@@ -1,0 +1,12 @@
+https://hackernoon.com/create-your-first-arduino-node-js-iot-visualization-app-in-under-15-minutes-619f8e6f7181
+
+https://www.npmjs.com/package/node-pulsesensor
+
+https://pulsesensor.com/
+
+
+
+
+-------------
+
+https://programarfacil.com/blog/arduino-blog/arduino-via-web-con-firmata/
