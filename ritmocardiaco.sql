@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
--- https://www.phpmyadmin.net/
+-- version 4.4.12
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2018 a las 00:39:14
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.4
+-- Tiempo de generación: 03-12-2018 a las 21:35:52
+-- Versión del servidor: 5.6.25
+-- Versión de PHP: 5.6.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cardiologo`
 --
 
-CREATE TABLE `cardiologo` (
+CREATE TABLE IF NOT EXISTS `cardiologo` (
   `Idcardiologo` varchar(15) NOT NULL,
   `Usuario_DNI` char(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -36,10 +34,34 @@ CREATE TABLE `cardiologo` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_paciente`
+--
+
+CREATE TABLE IF NOT EXISTS `datos_paciente` (
+  `id` int(11) NOT NULL,
+  `peso` int(11) DEFAULT NULL,
+  `talla` int(11) DEFAULT NULL,
+  `alergia` varchar(200) DEFAULT NULL,
+  `observacion` varchar(500) DEFAULT NULL,
+  `dni_usuario` int(8) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datos_paciente`
+--
+
+INSERT INTO `datos_paciente` (`id`, `peso`, `talla`, `alergia`, `observacion`, `dni_usuario`) VALUES
+(1, 120, 169, 'niguno', '                  \r\n                ', 70598957),
+(2, 0, 20, 'todas', 'no tiene observaciones', 78495689),
+(3, 150, 120, 'no', 'laralala alal            ', 78561896);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `gorro`
 --
 
-CREATE TABLE `gorro` (
+CREATE TABLE IF NOT EXISTS `gorro` (
   `Idgorro` int(11) NOT NULL,
   `ips_gorro` varchar(50) DEFAULT NULL,
   `Ritmo_Idritmo` int(11) NOT NULL
@@ -51,7 +73,7 @@ CREATE TABLE `gorro` (
 -- Estructura de tabla para la tabla `historial_incidencias`
 --
 
-CREATE TABLE `historial_incidencias` (
+CREATE TABLE IF NOT EXISTS `historial_incidencias` (
   `Id_histo` int(11) NOT NULL,
   `Fecha_in` date DEFAULT NULL,
   `Nivel_gravedad` varchar(45) DEFAULT NULL,
@@ -66,12 +88,12 @@ CREATE TABLE `historial_incidencias` (
 -- Estructura de tabla para la tabla `observaciones`
 --
 
-CREATE TABLE `observaciones` (
+CREATE TABLE IF NOT EXISTS `observaciones` (
   `id` int(11) NOT NULL,
   `observacion` varchar(500) NOT NULL,
   `id_usuario` int(8) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `observaciones`
@@ -88,7 +110,9 @@ INSERT INTO `observaciones` (`id`, `observacion`, `id_usuario`, `fecha`) VALUES
 (8, 'otra observacion', 70598957, '2018-12-01 22:59:44'),
 (9, 'Un paciente muuyyy lok', 11354151, '2018-12-01 23:13:40'),
 (11, 'Kjasdas ad asdjkas ka asjfkasj kasjf kl', 70598957, '2018-12-01 23:27:37'),
-(12, 'otra pri jasdj kasndk  ', 11354151, '2018-12-01 23:28:19');
+(12, 'otra pri jasdj kasndk  ', 11354151, '2018-12-01 23:28:19'),
+(13, 'otrita pruebita', 70598957, '2018-12-03 14:40:06'),
+(14, 'todo tiene un inicio', 78495689, '2018-12-03 20:10:21');
 
 -- --------------------------------------------------------
 
@@ -96,7 +120,7 @@ INSERT INTO `observaciones` (`id`, `observacion`, `id_usuario`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `paciente`
 --
 
-CREATE TABLE `paciente` (
+CREATE TABLE IF NOT EXISTS `paciente` (
   `Idpaciente` int(11) NOT NULL,
   `Peso` decimal(10,0) DEFAULT NULL,
   `Talla` decimal(10,0) DEFAULT NULL,
@@ -109,7 +133,7 @@ CREATE TABLE `paciente` (
   `Cardiologo_Idcardiologo` varchar(15) NOT NULL,
   `Cardiologo_Usuario_DNI` char(8) NOT NULL,
   `Historial_incidencias_Id_histo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `paciente`
@@ -125,7 +149,7 @@ INSERT INTO `paciente` (`Idpaciente`, `Peso`, `Talla`, `Grupo_sanguineo`, `Alerg
 -- Estructura de tabla para la tabla `ritmo`
 --
 
-CREATE TABLE `ritmo` (
+CREATE TABLE IF NOT EXISTS `ritmo` (
   `Idritmo` int(11) NOT NULL,
   `Medida_ritmo` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -136,7 +160,7 @@ CREATE TABLE `ritmo` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `DNI` char(8) NOT NULL,
   `Nombre` varchar(45) DEFAULT NULL,
   `Apellido` varchar(45) DEFAULT NULL,
@@ -152,10 +176,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DNI`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `Celular`, `Contrasena`, `Tipo_usuario`) VALUES
-('11354151', 'lalenyn', 'safdsafdsdfsd', 'ndfasndjasn', 'lenynrara@gmail.com', NULL, '111', ''),
 ('70485826', 'Lenyn Elí ', 'Flores balandra', 'San jerónimo', 'Lalenyn@gmail.com', '998745269', '12345', 'admin'),
-('70598957', 'kevin', 'quispel ima', 'A.V Los libertadores - psj. Grau s/n ', 'unajmakev@gmail.com', '987075780', '1234', 'paciente'),
-('89568974', 'Admerson', 'cahuana', 'A.v piscina', 'admerson@gmail.com', NULL, 'admerson', '');
+('70598957', 'Kevin', 'Quispe Lima', 'A.V Los libertadores - psj. Grau s/n ', 'unajmakev@gmail.com', '987075780', '1234', 'paciente'),
+('78495689', 'Marcos', 'León perez', 'Av. lirios', 'marquitos@gmail.com', '985633215', '1234', 'paciente'),
+('78561896', 'Juan', 'martinez ochoa', 'Av. jirones', 'juanmartinez@gmail.com', '954866231', '1234', '');
 
 --
 -- Índices para tablas volcadas
@@ -166,6 +190,12 @@ INSERT INTO `usuario` (`DNI`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `Celu
 --
 ALTER TABLE `cardiologo`
   ADD PRIMARY KEY (`Idcardiologo`,`Usuario_DNI`);
+
+--
+-- Indices de la tabla `datos_paciente`
+--
+ALTER TABLE `datos_paciente`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `gorro`
@@ -208,36 +238,35 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `datos_paciente`
+--
+ALTER TABLE `datos_paciente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT de la tabla `gorro`
 --
 ALTER TABLE `gorro`
   MODIFY `Idgorro` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `historial_incidencias`
 --
 ALTER TABLE `historial_incidencias`
   MODIFY `Id_histo` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `observaciones`
 --
 ALTER TABLE `observaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `Idpaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `Idpaciente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `ritmo`
 --
 ALTER TABLE `ritmo`
   MODIFY `Idritmo` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
