@@ -9,6 +9,7 @@ class Usuario_modelo{
 	
 	private $db;
 	private $usuarios;
+	private $usuario;
 	private $observaciones;
 
 	function __construct($url="modelo/Conectar.php"){ //
@@ -17,6 +18,8 @@ class Usuario_modelo{
 		$this->db=Conectar::conexion();
 
 		$this->usuarios=array();
+
+		$this->usuario=array();
 
 		$this->observaciones=array();
 
@@ -32,6 +35,19 @@ class Usuario_modelo{
 		}
 
 		return $this->usuarios;
+
+	}
+
+	public function get_usuario($id){ // * modificar para crear la páginación. Recibir por parametro el número para el inicio de la páginación
+		# code...
+		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE DNI=$id");
+
+		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
+			# code...
+			$this->usuario[] = $registro;
+		}
+
+		return $this->usuario;
 
 	}
 
@@ -67,6 +83,29 @@ class Usuario_modelo{
 
 		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":direccion" => $direccion, ":email" => $email, ":celular" => $celular, ":constrasena" => $constrasena, ":tipo_usuario" => $tipo_usuario));
 
+		//tabla datos_usuario
+		$this->db->query("INSERT INTO datos_paciente (id, peso, talla, alergia, observacion, dni_usuario) VALUES (NULL,NULL,NULL,NULL,NULL,$dni)");
+
+	}
+
+	public function actualizar_datos_paciente($dni, $peso, $talla, $alergia, $observacion){
+
+		$sql = "UPDATE datos_paciente SET peso=:peso, talla=:talla, alergia=:alergia, observacion=:observacion WHERE dni_usuario = :dni";
+
+		$consulta = $this->db->prepare($sql);
+
+		$consulta->execute(array(":dni" => $dni, ":peso" => $peso, ":talla" => $talla, ":alergia" => $alergia, ":observacion" => $observacion));
+
+	}
+
+public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular){
+
+		$sql = "UPDATE usuario SET Nombre=:nombre, Apellido=:apellidos, Correo=:email, Celular=:celular WHERE DNI = :dni";
+
+		$consulta = $this->db->prepare($sql);
+
+		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":email" => $email, ":celular" => $celular));
+
 	}
 
 
@@ -89,6 +128,22 @@ class Usuario_modelo{
 		return $this->observaciones;
 	}
 
+
+
+
+
+
+	public function existe_usuario($id){
+		$consulta = $this->db->query("SELECT * FROM usuario WHERE DNI=$id");
+
+		while ($registro_obs = $consulta->fetch(PDO::FETCH_ASSOC)) {
+			# code...
+			$this->observaciones[] = $registro_obs;
+		}
+
+		return $this->observaciones;
+	}
+
 	public function mensaje_de_aliento(){
 		return "VAMO Ptito LA LENYN, TU PUEDES!!!";
 	}
@@ -99,6 +154,11 @@ class Usuario_modelo{
 ////jeecutar solo cuando todo esté predido :v 
 //$person = new Usuario_modelo("../modelo/Conectar.php");
 //echo $person->set_observacion("lalalalal",12324);
+
+//$person->set_usuario("marcos","leon perez","78495689","marcos@gmail.com","Av. lirios","985633215","1234","paciente");
+//$person->actualizar_datos_paciente("78495689", 0, "20", "todas", "no tiene observaciones");
+//$person->actualizar_usuario("78495689", "Marcos", "León perez", "marquitos@gmail.com", 985633215);
+//echo "Sin errores";
 
  ?>
 

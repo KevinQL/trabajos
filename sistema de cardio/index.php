@@ -14,7 +14,11 @@ if (isset($_SESSION["USUARIO"])) {
 		# code...
 		require_once("controlador/historial_controlador.php");
 
-	}else{
+	}else if (isset($_GET['actualizar'])) {
+		# code...
+		require_once("controlador/actualizar_controlador.php");
+	}
+	else{
 		//pagina de inicio INTCAP
 		require_once("controlador/inicio_controldor.php");
 	}
