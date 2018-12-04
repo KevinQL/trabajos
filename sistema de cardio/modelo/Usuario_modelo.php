@@ -117,6 +117,17 @@ public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular){
 
 	}
 
+	public function actualizar_observacion($fecha, $obs){
+
+		$sql = "UPDATE observaciones SET observacion=:obs WHERE fecha = :fecha";
+		$consulta = $this->db->prepare($sql);
+		$consulta->execute(array(":fecha" => $fecha, ":obs" => $obs));
+	}
+
+	public function eliminar_observacion($fecha){
+		$this->db->query("DELETE FROM observaciones  WHERE fecha='$fecha'");
+	}
+
 	public function get_observaciones($id){
 		$consulta = $this->db->query("SELECT * FROM observaciones WHERE id_usuario=$id");
 
@@ -128,7 +139,19 @@ public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular){
 		return $this->observaciones;
 	}
 
+	public function get_observaciones_fecha($fecha){
 
+		$consulta = $this->db->query("SELECT observacion FROM observaciones WHERE fecha='$fecha'"); // para las fechas usar comillas simples :O
+
+		$obs_fecha = array();
+
+		while ($registro_obs = $consulta->fetch(PDO::FETCH_ASSOC)) {
+			# code...
+			$obs_fecha[] = $registro_obs;
+		}
+
+		return $obs_fecha;
+	}
 
 
 
