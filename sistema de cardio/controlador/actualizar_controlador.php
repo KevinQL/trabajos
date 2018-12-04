@@ -20,6 +20,7 @@
 	if($existeUsuario){
 
 		$tabla_paciente = $user->get_usuario($_SESSION['USUARIO_ACTUAL']);
+		$tabla_datos_paciente = $user->get_datos_paciente($_SESSION['USUARIO_ACTUAL']);
 
 		require_once("vista/actualizar_vista.php");
 	}else{

@@ -43,6 +43,11 @@
           foreach ($tabla_paciente as $paciente) {
           	# code...
           }
+
+          foreach ($tabla_datos_paciente as $datos_paciente) {
+            # code...
+          }
+
            ?>
           
           <form method="POST" id="formulario" action="controlador/actualizar2_controlador.php">
@@ -89,21 +94,21 @@
             <div class="row form-group">
               <label for="pesokg" class="col col-md-4 col-form-label">Peso-KG</label>
               <div class="col-md-8">
-                <input type="number" name="pesokg" id="pesokg" class="form-control" value="">              
+                <input type="number" name="pesokg" id="pesokg" class="form-control" value="<?php echo $datos_paciente['peso']; ?>">              
               </div>
             </div>
 
             <div class="row form-group">
               <label for="talla" class="col col-md-4 col-form-label">Talla-CM</label>
               <div class="col-md-8">
-                <input type="number" name="talla" id="talla" class="form-control" value="">              
+                <input type="number" name="talla" id="talla" class="form-control" value="<?php echo $datos_paciente['talla']; ?>">              
               </div>
             </div>
             
             <div class="row form-group">
               <label for="alergias" class="col col-md-4 col-form-label">Alergias?</label>
               <div class="col-md-8">
-                <input type="text" name="alergias" id="alergias" class="form-control" value="">              
+                <input type="text" name="alergias" id="alergias" class="form-control" value="<?php echo $datos_paciente['alergia']; ?>">              
               </div>
             </div>
 
@@ -119,9 +124,10 @@
             <div class="row form-group">
               <label for="observacion" class="col col-md-4 col-form-label">Observación</label>
               <div class="col-md-8">
-                <textarea rows="3" name="observacion" id="observacion" class="form-control" value="">
-                  
-                </textarea>           
+                <textarea rows="3" name="observacion" id="observacion" class="form-control text-left" value="<?php echo $datos_paciente['observacion']; ?>">
+                  <?php echo $datos_paciente['observacion']; ?>
+                </textarea>       
+
               </div>
             </div>
 

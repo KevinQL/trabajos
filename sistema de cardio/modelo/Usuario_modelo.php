@@ -98,7 +98,19 @@ class Usuario_modelo{
 
 	}
 
-public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular){
+	public function get_datos_paciente($dni_user){
+		$consulta = $this->db->query("SELECT * FROM datos_paciente WHERE dni_usuario=$dni_user");
+
+		$datos_paciente = array();
+		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
+			# code...
+			$datos_paciente[] = $registro;
+		}
+
+		return $datos_paciente;
+	}
+
+	public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular){
 
 		$sql = "UPDATE usuario SET Nombre=:nombre, Apellido=:apellidos, Correo=:email, Celular=:celular WHERE DNI = :dni";
 
