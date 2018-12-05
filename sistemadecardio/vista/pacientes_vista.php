@@ -29,8 +29,8 @@
     <!--FIN NAVEGAR-->
 
     <section class="container py-3">
-
-      <h3 class="text-center mb-3 text-uppercase font-italic">Lista de pacientes</h3>
+      <p class="float-left"><a href="#">>admin <?php echo $_SESSION['USUARIO']; ?></a></p>
+      <h3 class="text-center mb-3 text-uppercase font-italic">pacientes</h3>
       
       <?php 
         $num_usuario=0;

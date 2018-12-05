@@ -8,6 +8,7 @@
 	$apellido = $_POST['apellidos'];
 	$email = $_POST['email'];
 	$celular = $_POST['celular'];
+	$celular2 = $_POST['celular2'];
 	$dni = $_POST['dni'];
 
 	$peso = $_POST['pesokg'];
@@ -21,7 +22,7 @@
 	$user = new Usuario_modelo('../modelo/Conectar.php');
 
 	$user->actualizar_datos_paciente($id, $peso, $talla, $alergia, $observacion);
-	$user->actualizar_usuario($id, $nombre, $apellido,$email, $celular);
+	$user->actualizar_usuario($id, $nombre, $apellido,$email, $celular, $celular2);
 
 	echo "LOS DATOS SE ACTUALIZARON CORRECTAMENTE";
 

@@ -10,3 +10,21 @@ https://pulsesensor.com/
 -------------
 
 https://programarfacil.com/blog/arduino-blog/arduino-via-web-con-firmata/
+
+
+
+///-------------------------- TAREAS
+[] que se vea el usuario del admin  
+
+[x] cambiar el codigo sql para el admi. lenyn no debe aparecer en la lista 
+[x] contruir la página de regiustro de paciente
+[x] actualizar la página de actualizar. celular2
+[x] agrgar a la bd columna telefono familia
+[x] modificar funcion actualizar paciente del celular 2
+
+[]cambiar el color de la opción elegida
+[] trabajar en las expresiones regulares de los imputs de los formularios
+[] quitar el div de la página principal
+[] arreglar página de paciente cuando la página este en dispositivos más pequeños
+
+
