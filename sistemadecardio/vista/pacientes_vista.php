@@ -29,7 +29,7 @@
     <!--FIN NAVEGAR-->
 
     <section class="container py-3">
-      <p class="float-left"><a href="#">>admin <?php echo $_SESSION['USUARIO']; ?></a></p>
+      <p class="float-left">USUARIO <a href="#"> <?php echo $_SESSION['USUARIO']; ?></a></p>
       <h3 class="text-center mb-3 text-uppercase font-italic">pacientes</h3>
       
       <?php 

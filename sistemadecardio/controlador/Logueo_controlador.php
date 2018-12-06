@@ -17,11 +17,11 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 
 	$Loguearse = new Usuario_modelo("../modelo/Conectar.php");//modificamos la dirección debido a que el fomrulario redirecciona directamente a este archivo... con el header()
 	$ingreso = $Loguearse->ingresar_sistema($usuario,$password);
-	//$admin = $Loguearse->get_admin($usuario);
+	$admin = $Loguearse->get_admin($usuario);
 	if ($ingreso) {
 		# code...
 		session_start();
-		$_SESSION["USUARIO"] = ""; // ver
+		$_SESSION["USUARIO"] = $admin[0]['Nombre']; // ver
 		$_SESSION['USUARIO_ACTUAL']=111;
 		$_SESSION['URL'] = "";
 		header("location:../index.php"); //Importante!!! el formulario redirecciona a está página. por lo tanto estamos en está dirección /controlador/logueo_controlador.php. para llegar a la pagina index.php necesitamos la ruta descrita en la funcion header();

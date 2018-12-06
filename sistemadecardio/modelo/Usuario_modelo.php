@@ -50,10 +50,10 @@ class Usuario_modelo{
 		return $this->usuario;
 
 	}
-/*
-	public function get_admin($email){ // * modificar para crear la páginación. Recibir por parametro el número para el inicio de la páginación
+/**/
+	public function get_admin($email){ 
 		# code...
-		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE DNI=$email");
+		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE Correo='$email'");
 
 		$admin = array();
 		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
@@ -64,13 +64,13 @@ class Usuario_modelo{
 		return $admin;
 
 	}
-*/
+
 	public function ingresar_sistema($user, $password){
 
 		$login = htmlentities(addslashes($user));
 		$password = htmlentities(addslashes($password));
 
-		$consulta = $this->db->prepare("SELECT * FROM USUARIO WHERE Correo = :login AND Contrasena = :password");
+		$consulta = $this->db->prepare("SELECT * FROM USUARIO WHERE Correo = :login AND Contrasena = :password AND Tipo_usuario = 'admin'");
 
 		$consulta->bindValue(":login", $login);
 		$consulta->bindValue(":password", $password);
