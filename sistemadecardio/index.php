@@ -17,6 +17,9 @@ if (isset($_SESSION["USUARIO"])) {
 	}else if (isset($_GET['actualizar'])) {
 		# code...
 		require_once("controlador/actualizar_controlador.php");
+	}else if(isset($_GET['registro'])){
+		#
+		require_once("controlador/Opcion_registro.php");
 	}
 	else{
 		//pagina de inicio INTCAP

@@ -27,7 +27,7 @@ class Usuario_modelo{
 
 	public function get_usuarios(){ // * modificar para crear la páginación. Recibir por parametro el número para el inicio de la páginación
 		# code...
-		$consulta = $this->db->query("SELECT * FROM USUARIO");
+		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE Tipo_usuario = 'paciente'");
 
 		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
 			# code...
@@ -50,13 +50,27 @@ class Usuario_modelo{
 		return $this->usuario;
 
 	}
+/**/
+	public function get_admin($email){ 
+		# code...
+		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE Correo='$email'");
+
+		$admin = array();
+		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
+			# code...
+			$admin[] = $registro;
+		}
+
+		return $admin;
+
+	}
 
 	public function ingresar_sistema($user, $password){
 
 		$login = htmlentities(addslashes($user));
 		$password = htmlentities(addslashes($password));
 
-		$consulta = $this->db->prepare("SELECT * FROM USUARIO WHERE Correo = :login AND Contrasena = :password");
+		$consulta = $this->db->prepare("SELECT * FROM USUARIO WHERE Correo = :login AND Contrasena = :password AND Tipo_usuario = 'admin'");
 
 		$consulta->bindValue(":login", $login);
 		$consulta->bindValue(":password", $password);
@@ -75,13 +89,13 @@ class Usuario_modelo{
 	}
 
 
-	public function set_usuario($nombre,$apellidos,$dni,$email,$direccion,$celular,$constrasena,$tipo_usuario){
+	public function set_usuario($nombre,$apellidos,$dni,$email,$direccion,$celular,$celular2,$constrasena,$tipo_usuario){
 
-		$sql = "INSERT INTO USUARIO (DNI, Nombre, Apellido, Direccion, Correo, Celular, Contrasena, Tipo_usuario) VALUES (:dni, :nombre, :apellidos, :direccion, :email, :celular, :constrasena, :tipo_usuario)";
+		$sql = "INSERT INTO USUARIO (DNI, Nombre, Apellido, Direccion, Correo, Celular, celular2, Contrasena, Tipo_usuario) VALUES (:dni, :nombre, :apellidos, :direccion, :email, :celular,:celular2, :constrasena, :tipo_usuario)";
 
 		$consulta = $this->db->prepare($sql);
 
-		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":direccion" => $direccion, ":email" => $email, ":celular" => $celular, ":constrasena" => $constrasena, ":tipo_usuario" => $tipo_usuario));
+		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":direccion" => $direccion, ":email" => $email, ":celular" => $celular, ":celular2" => $celular2, ":constrasena" => $constrasena, ":tipo_usuario" => $tipo_usuario));
 
 		//tabla datos_usuario
 		$this->db->query("INSERT INTO datos_paciente (id, peso, talla, alergia, observacion, dni_usuario) VALUES (NULL,NULL,NULL,NULL,NULL,$dni)");
@@ -110,13 +124,13 @@ class Usuario_modelo{
 		return $datos_paciente;
 	}
 
-	public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular){
+	public function actualizar_usuario($dni, $nombre, $apellidos, $email, $celular, $celular2){
 
-		$sql = "UPDATE usuario SET Nombre=:nombre, Apellido=:apellidos, Correo=:email, Celular=:celular WHERE DNI = :dni";
+		$sql = "UPDATE usuario SET Nombre=:nombre, Apellido=:apellidos, Correo=:email, Celular=:celular, celular2=:celular2 WHERE DNI = :dni";
 
 		$consulta = $this->db->prepare($sql);
 
-		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":email" => $email, ":celular" => $celular));
+		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":email" => $email, ":celular" => $celular, ":celular2" => $celular2));
 
 	}
 

@@ -17,11 +17,11 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 
 	$Loguearse = new Usuario_modelo("../modelo/Conectar.php");//modificamos la dirección debido a que el fomrulario redirecciona directamente a este archivo... con el header()
 	$ingreso = $Loguearse->ingresar_sistema($usuario,$password);
-	
+	$admin = $Loguearse->get_admin($usuario);
 	if ($ingreso) {
 		# code...
 		session_start();
-		$_SESSION["USUARIO"] = $_POST["login"];
+		$_SESSION["USUARIO"] = $admin[0]['Nombre']; // ver
 		$_SESSION['USUARIO_ACTUAL']=111;
 		$_SESSION['URL'] = "";
 		header("location:../index.php"); //Importante!!! el formulario redirecciona a está página. por lo tanto estamos en está dirección /controlador/logueo_controlador.php. para llegar a la pagina index.php necesitamos la ruta descrita en la funcion header();
@@ -41,24 +41,40 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 	$email=$_POST["email"];
 	$direccion=$_POST["direccion"];
 	$celular=$_POST["celular"];
+	$celular2=$_POST["celular2"];
 	$password=$_POST["password"];
-	$tipo_usuario = "";
-
-	var_dump($_POST);
+	$tipo_usuario = "admi";
 
 	require_once("../modelo/Usuario_modelo.php");
 
 	$usuario = new Usuario_modelo("../modelo/Conectar.php");
 
-	$usuario->set_usuario($nombre,$apellidos,$dni,$email,$direccion,$celular,$password,$tipo_usuario);
+	$usuario->set_usuario($nombre,$apellidos,$dni,$email,$direccion,$celular,$celular2,$password,$tipo_usuario);
 
 	header("location:../index.php");
 
 
-}else if (isset($_POST['registrar_paciente'])) {
+}else if (isset($_GET['registrar_paciente']) ) {
 	# code...
-	$nombre = $_POST['nombre'];
-	echo "string".$nombre;
+
+	$nombre=$_POST["nombre"];
+	$apellidos=$_POST["apellidos"];
+	$dni=$_POST["dni"];
+	$email=$_POST["email"];
+	$direccion=$_POST["direccion"];
+	$celular=$_POST["celular"];
+	$celular2=$_POST["celular2"];
+	$password="no";
+	$tipo_usuario = "paciente";
+
+	require_once("../modelo/Usuario_modelo.php");
+
+	$usuario = new Usuario_modelo("../modelo/Conectar.php");
+
+	$usuario->set_usuario($nombre,$apellidos,$dni,$email,$direccion,$celular,$celular2,$password,$tipo_usuario);
+
+	echo "PACIENTE INSERTADO";
+
 
 }else{
 

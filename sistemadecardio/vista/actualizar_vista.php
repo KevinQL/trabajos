@@ -80,6 +80,13 @@
             </div>
 
             <div class="row form-group">
+              <label for="celular2" class="col col-md-4 col-form-label">Celular 2</label>
+              <div class="col-md-8">
+                <input type="text" name="celular2" id="celular2" class="form-control" value="<?php echo $paciente['celular2']; ?>">              
+              </div>
+            </div>
+
+            <div class="row form-group">
               <label for="dni" class="col col-md-4 col-form-label">DNI</label>
               <div class="col-md-8">
                 <input type="text" name="dni" id="dni" class="form-control" value="<?php echo $paciente['DNI']; ?>">              
@@ -165,6 +172,7 @@
 	            }
 	        });
 		});
+
 	    </script>
 
   </body>
