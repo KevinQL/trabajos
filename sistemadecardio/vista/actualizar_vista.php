@@ -54,42 +54,42 @@
             <div class="row form-group">
               <label for="nombre" class="col col-md-4 col-form-label">Nombre</label>
               <div class="col-md-8">
-                <input type="text" name="nombre" id="nombre" class="form-control" value="<?php echo $paciente['Nombre']; ?>">              
+                <input type="text" name="nombre" id="nombre" class="form-control" value="<?php echo $paciente['Nombre']; ?>" required>              
               </div>
             </div>
    
             <div class="row form-group">
               <label for="apellidos" class="col col-md-4 col-form-label">Apellidos</label>
               <div class="col-md-8">
-                <input type="text" name="apellidos" id="apellidos" class="form-control" value="<?php echo $paciente['Apellido']; ?>">              
+                <input type="text" name="apellidos" id="apellidos" class="form-control" value="<?php echo $paciente['Apellido']; ?>" required>              
               </div>
             </div>
 
             <div class="row form-group">
               <label for="email" class="col col-md-4 col-form-label">Email</label>
               <div class="col-md-8">
-                <input type="email" name="email" id="email" class="form-control" value="<?php echo $paciente['Correo']; ?>">              
+                <input type="email" name="email" id="email" class="form-control" value="<?php echo $paciente['Correo']; ?>" required>              
               </div>
             </div>
 
             <div class="row form-group">
               <label for="celular" class="col col-md-4 col-form-label">Celular</label>
               <div class="col-md-8">
-                <input type="text" name="celular" id="celular" class="form-control" value="<?php echo $paciente['Celular']; ?>">              
+                <input type="text" name="celular" id="celular" class="form-control" value="<?php echo $paciente['Celular']; ?>" required>              
               </div>
             </div>
 
             <div class="row form-group">
               <label for="celular2" class="col col-md-4 col-form-label">Celular 2</label>
               <div class="col-md-8">
-                <input type="text" name="celular2" id="celular2" class="form-control" value="<?php echo $paciente['celular2']; ?>">              
+                <input type="text" name="celular2" id="celular2" class="form-control" value="<?php echo $paciente['celular2']; ?>" >              
               </div>
             </div>
 
             <div class="row form-group">
               <label for="dni" class="col col-md-4 col-form-label">DNI</label>
               <div class="col-md-8">
-                <input type="text" name="dni" id="dni" class="form-control" value="<?php echo $paciente['DNI']; ?>">              
+                <input type="text" name="dni" id="dni" class="form-control" value="<?php echo $paciente['DNI']; ?>" disabled>              
               </div>
             </div>
 
@@ -115,7 +115,7 @@
             <div class="row form-group">
               <label for="alergias" class="col col-md-4 col-form-label">Alergias?</label>
               <div class="col-md-8">
-                <input type="text" name="alergias" id="alergias" class="form-control" value="<?php echo $datos_paciente['alergia']; ?>">              
+                <input type="text" name="alergias" id="alergias" class="form-control" value="<?php echo $datos_paciente['alergia']; ?>" >              
               </div>
             </div>
 

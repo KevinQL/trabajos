@@ -28,7 +28,6 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 	}else{
 
 		header("location:../index.php");
-
 	}
 
 

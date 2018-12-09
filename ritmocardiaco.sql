@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2018 a las 21:43:20
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.2.12
+-- Tiempo de generación: 09-12-2018 a las 17:09:02
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,13 +42,14 @@ CREATE TABLE `datos_paciente` (
 --
 
 INSERT INTO `datos_paciente` (`id`, `peso`, `talla`, `alergia`, `observacion`, `dni_usuario`) VALUES
-(1, 84, 169, 'Polio, penicilina, citomiricina.', '                                    Este tipo es el puto amo                                ', 70598957),
+(1, 84, 169, 'Polio, penicilina, citomiricina.', '                                    Este tipo es el tipo                                                                               ', 70598957),
 (2, 0, 20, 'todas', 'no tiene observaciones', 78495689),
 (3, 150, 120, 'no', 'laralala alal            ', 78561896),
 (4, NULL, NULL, NULL, NULL, 78546985),
-(5, NULL, NULL, NULL, NULL, 75558957),
+(5, 0, 0, '', 'La persona viene del planeta vegito                            ', 75558957),
 (6, NULL, NULL, NULL, NULL, 76406431),
-(7, NULL, NULL, NULL, NULL, 76549843);
+(7, NULL, NULL, NULL, NULL, 76549843),
+(8, NULL, NULL, NULL, NULL, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -100,13 +101,15 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DNI`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `Celular`, `celular2`, `Contrasena`, `Tipo_usuario`) VALUES
+('', '', '', '', '', '', 0, 'no', 'admin'),
 ('70485826', 'Lenyn Elí ', 'Flores balandra', 'San jerónimo', 'Lalenyn@gmail.com', '998745269', NULL, '12345', 'admin'),
-('70598957', 'Kevin', 'Quispe Lima', 'A.V Los libertadores - psj. Grau s/n ', 'unajmakev@gmail.com', '987075780', 983677639, '1234', 'paciente'),
-('75558957', 'vegeta', 'ttpra', 'Jr. los chancas S/N', 'vegeta@gmail.com', '985633214', NULL, 'no', 'paciente'),
+('70598957', 'kevin', 'Quispe Lima', 'A.V Los libertadores - psj. Grau s/n ', 'unajmakev@gmail.com', '987075780', 983677639, '1234', 'paciente'),
+('75558957', 'vegeta', 'kakaroto', 'Jr. los chancas S/N', 'vegeta@gmail.com', '985633214', 0, 'no', 'paciente'),
 ('76406431', 'julio', 'balandra ', 'AV. Los libertadores', 'julio@gmail.com', '999456147', 985666321, 'no', 'paciente'),
-('76549843', 'admi', 'admi', 'Jr. los chancas S/N', 'admi@gmail.com', '963258741', 963258456, 'admi', 'admi'),
+('76549843', 'admi', 'admi', 'Jr. los chancas S/N', 'admi@gmail.com', '963258741', 963258456, 'admi', 'admin'),
 ('78495689', 'Marcos', 'León perez', 'Av. lirios', 'marquitos@gmail.com', '985633215', NULL, '1234', 'paciente'),
-('78546985', 'caty', 'verde castro ', 'AV. Los libertadores', 'caty@gmail.com', '987655416', NULL, 'no', 'paciente');
+('78546985', 'caty', 'verde castro ', 'AV. Los libertadores', 'caty@gmail.com', '987655416', NULL, 'no', 'paciente'),
+('78945612', 'lclasm', 'lkmm', 'kjnjnnj', 'unajmakev@gmail.com', '98745', 48441212, 'mkmk', 'admi');
 
 --
 -- Índices para tablas volcadas
@@ -138,13 +141,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `datos_paciente`
 --
 ALTER TABLE `datos_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones`
 --
 ALTER TABLE `observaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

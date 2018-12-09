@@ -38,42 +38,42 @@
       <div class="row form-group">
         <label for="nombre" class="col col-md-4 col-form-label">Nombre</label>
         <div class="col-md-8">
-          <input type="text" name="nombre" id="nombre" class="form-control">              
+          <input type="text" name="nombre" id="nombre" class="form-control" required>              
         </div>
       </div>
 
       <div class="row form-group">
         <label for="apellidos" class="col col-md-4 col-form-label">Apellidos</label>
         <div class="col-md-8">
-          <input type="text" name="apellidos" id="apellidos" class="form-control">              
+          <input type="text" name="apellidos" id="apellidos" class="form-control" required>              
         </div>
       </div>
 
 <div class="row form-group">
         <label for="dni" class="col col-md-4 col-form-label">DNI</label>
         <div class="col-md-8">
-          <input type="number" name="dni" id="dni" class="form-control">              
+          <input type="number" name="dni" id="dni" class="form-control" required>              
         </div>
       </div>
 
       <div class="row form-group">
         <label for="email" class="col col-md-4 col-form-label">Email</label>
         <div class="col-md-8">
-          <input type="email" name="email" id="email" class="form-control">              
+          <input type="email" name="email" id="email" class="form-control" required>              
         </div>
       </div>
 
       <div class="row form-group">
         <label for="direccion" class="col col-md-4 col-form-label">Dirección</label>
         <div class="col-md-8">
-          <input type="text" name="direccion" id="direccion" class="form-control">              
+          <input type="text" name="direccion" id="direccion" class="form-control" required>              
         </div>
       </div>
 
       <div class="row form-group">
         <label for="celular" class="col col-md-4 col-form-label">Celular</label>
         <div class="col-md-8">
-          <input type="number" name="celular" id="celular" class="form-control">              
+          <input type="number" name="celular" id="celular" class="form-control" required>              
         </div>
       </div>    
 
@@ -87,7 +87,7 @@
       <div class="row form-group" hidden>
         <label for="password" class="col col-md-4 col-form-label">Contraseña</label>
         <div class="col-md-8">
-          <input type="password" name="password" id="password" class="form-control">              
+          <input type="password" name="password" id="password" class="form-control" required>              
         </div>
       </div>
       

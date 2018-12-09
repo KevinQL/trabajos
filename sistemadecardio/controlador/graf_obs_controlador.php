@@ -40,6 +40,35 @@
 				echo $_SESSION['URL'];
 
 				break;
+			case '31152319': // Usuario con cardiograma 1
+				# code...
+				$_SESSION['URL'] = "https://thingspeak.com/channels/645355/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIEMPO&yaxis=BPM";
+				
+				echo $_SESSION['URL'];
+
+				break;
+
+			case '31149535': // Usuario con cardiograma 2
+				# code...
+				$_SESSION['URL'] = "https://thingspeak.com/channels/645357/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIEMPO&yaxis=BPM";
+				
+				echo $_SESSION['URL'];
+
+				break;
+			case '31551695': // Usuario con cardiograma 3
+				# code...
+				$_SESSION['URL'] = "https://thingspeak.com/channels/645360/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIEMPO&yaxis=BPM";
+				
+				echo $_SESSION['URL'];
+
+				break;
+			case '###': // Usuario con cardiograma 4
+				# code...
+				$_SESSION['URL'] = "https://thingspeak.com/channels/645362/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIMEPO&yaxis=BPM";
+				
+				echo $_SESSION['URL'];
+
+				break;
 			
 			default:
 				# code...
