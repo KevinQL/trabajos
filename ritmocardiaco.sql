@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2018 a las 17:09:02
+-- Tiempo de generación: 09-12-2018 a las 22:45:32
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -43,13 +43,9 @@ CREATE TABLE `datos_paciente` (
 
 INSERT INTO `datos_paciente` (`id`, `peso`, `talla`, `alergia`, `observacion`, `dni_usuario`) VALUES
 (1, 84, 169, 'Polio, penicilina, citomiricina.', '                                    Este tipo es el tipo                                                                               ', 70598957),
-(2, 0, 20, 'todas', 'no tiene observaciones', 78495689),
-(3, 150, 120, 'no', 'laralala alal            ', 78561896),
-(4, NULL, NULL, NULL, NULL, 78546985),
-(5, 0, 0, '', 'La persona viene del planeta vegito                            ', 75558957),
-(6, NULL, NULL, NULL, NULL, 76406431),
-(7, NULL, NULL, NULL, NULL, 76549843),
-(8, NULL, NULL, NULL, NULL, 2147483647);
+(9, NULL, NULL, NULL, NULL, 74589632),
+(10, NULL, NULL, NULL, NULL, 31152319),
+(11, NULL, NULL, NULL, NULL, 31149535);
 
 -- --------------------------------------------------------
 
@@ -73,9 +69,7 @@ INSERT INTO `observaciones` (`id`, `observacion`, `id_usuario`, `fecha`) VALUES
 (5, 'otra pruebita mas con lorem o sin lorem masdjakdna hjasdb jasb jasfnb jasfnbjnfd jas', 70598957, '2018-12-01 22:37:10'),
 (7, 'Prueba de modificadooo', 70598957, '2018-12-05 19:13:48'),
 (8, 'otra observacion', 70598957, '2018-12-01 22:59:44'),
-(9, 'Un paciente muuyyy lok', 11354151, '2018-12-01 23:13:40'),
 (11, 'Kjasdas ad asdjkas ka asjfkasj kasjf kl', 70598957, '2018-12-01 23:27:37'),
-(12, 'otra pri jasdj kasndk  ', 11354151, '2018-12-01 23:28:19'),
 (13, 'otrita pruebita', 70598957, '2018-12-03 14:40:06');
 
 -- --------------------------------------------------------
@@ -102,14 +96,12 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`DNI`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `Celular`, `celular2`, `Contrasena`, `Tipo_usuario`) VALUES
 ('', '', '', '', '', '', 0, 'no', 'admin'),
+('31149535', 'Samuel', 'Ccoicca Flores', 'Psj. Rosales', '', '953821171', 0, 'no', 'paciente'),
+('31152319', 'Roberto', 'Chirino sevallos', 'Jr. Los chancas S/N', '', '982045988', 0, 'no', 'paciente'),
+('31551695', 'Rodolfo', 'Quispe peralta', 'Av. Los libertadores', 'rodoqp@gmail.com', '973631841', 0, 'no', 'paciente'),
 ('70485826', 'Lenyn Elí ', 'Flores balandra', 'San jerónimo', 'Lalenyn@gmail.com', '998745269', NULL, '12345', 'admin'),
 ('70598957', 'kevin', 'Quispe Lima', 'A.V Los libertadores - psj. Grau s/n ', 'unajmakev@gmail.com', '987075780', 983677639, '1234', 'paciente'),
-('75558957', 'vegeta', 'kakaroto', 'Jr. los chancas S/N', 'vegeta@gmail.com', '985633214', 0, 'no', 'paciente'),
-('76406431', 'julio', 'balandra ', 'AV. Los libertadores', 'julio@gmail.com', '999456147', 985666321, 'no', 'paciente'),
-('76549843', 'admi', 'admi', 'Jr. los chancas S/N', 'admi@gmail.com', '963258741', 963258456, 'admi', 'admin'),
-('78495689', 'Marcos', 'León perez', 'Av. lirios', 'marquitos@gmail.com', '985633215', NULL, '1234', 'paciente'),
-('78546985', 'caty', 'verde castro ', 'AV. Los libertadores', 'caty@gmail.com', '987655416', NULL, 'no', 'paciente'),
-('78945612', 'lclasm', 'lkmm', 'kjnjnnj', 'unajmakev@gmail.com', '98745', 48441212, 'mkmk', 'admi');
+('76549843', 'admi', 'admi', 'Jr. los chancas S/N', 'admin@gmail.com', '963258741', 963258456, 'admin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -141,7 +133,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `datos_paciente`
 --
 ALTER TABLE `datos_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones`

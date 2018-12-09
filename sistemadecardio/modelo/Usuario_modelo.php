@@ -204,10 +204,14 @@ class Usuario_modelo{
 //$person = new Usuario_modelo("../modelo/Conectar.php");
 //echo $person->set_observacion("lalalalal",12324);
 
+
+
 //$person->set_usuario("marcos","leon perez","78495689","marcos@gmail.com","Av. lirios","985633215","1234","paciente");
 //$person->actualizar_datos_paciente("78495689", 0, "20", "todas", "no tiene observaciones");
 //$person->actualizar_usuario("78495689", "Marcos", "León perez", "marquitos@gmail.com", 985633215);
 //echo "Sin errores";
+
+
 
  ?>
 
