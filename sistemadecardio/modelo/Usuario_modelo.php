@@ -27,7 +27,7 @@ class Usuario_modelo{
 
 	public function get_usuarios(){ // * modificar para crear la páginación. Recibir por parametro el número para el inicio de la páginación
 		# code...
-		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE Tipo_usuario = 'paciente'");
+		$consulta = $this->db->query("SELECT * FROM usuario WHERE Tipo_usuario = 'paciente'");
 
 		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
 			# code...
@@ -40,7 +40,7 @@ class Usuario_modelo{
 
 	public function get_usuario($id){ // * modificar para crear la páginación. Recibir por parametro el número para el inicio de la páginación
 		# code...
-		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE DNI=$id");
+		$consulta = $this->db->query("SELECT * FROM usuario WHERE DNI=$id");
 
 		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
 			# code...
@@ -53,7 +53,7 @@ class Usuario_modelo{
 /**/
 	public function get_admin($email){ 
 		# code...
-		$consulta = $this->db->query("SELECT * FROM USUARIO WHERE Correo='$email'");
+		$consulta = $this->db->query("SELECT * FROM usuario WHERE Correo='$email'");
 
 		$admin = array();
 		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
@@ -70,7 +70,7 @@ class Usuario_modelo{
 		$login = htmlentities(addslashes($user));
 		$password = htmlentities(addslashes($password));
 
-		$consulta = $this->db->prepare("SELECT * FROM USUARIO WHERE Correo = :login AND Contrasena = :password AND Tipo_usuario = 'admin'");
+		$consulta = $this->db->prepare("SELECT * FROM usuario WHERE Correo = :login AND Contrasena = :password AND Tipo_usuario = 'admin'");
 
 		$consulta->bindValue(":login", $login);
 		$consulta->bindValue(":password", $password);
@@ -91,7 +91,7 @@ class Usuario_modelo{
 
 	public function set_usuario($nombre,$apellidos,$dni,$email,$direccion,$celular,$celular2,$constrasena,$tipo_usuario){
 
-		$sql = "INSERT INTO USUARIO (DNI, Nombre, Apellido, Direccion, Correo, Celular, celular2, Contrasena, Tipo_usuario) VALUES (:dni, :nombre, :apellidos, :direccion, :email, :celular,:celular2, :constrasena, :tipo_usuario)";
+		$sql = "INSERT INTO usuario (DNI, Nombre, Apellido, Direccion, Correo, Celular, celular2, Contrasena, Tipo_usuario) VALUES (:dni, :nombre, :apellidos, :direccion, :email, :celular,:celular2, :constrasena, :tipo_usuario)";
 
 		$consulta = $this->db->prepare($sql);
 
@@ -155,7 +155,7 @@ class Usuario_modelo{
 	}
 
 	public function get_observaciones($id){
-		$consulta = $this->db->query("SELECT * FROM observaciones WHERE id_usuario=$id");
+		$consulta = $this->db->query("SELECT * FROM observaciones WHERE id_usuario=$id ORDER BY fecha DESC");
 
 		while ($registro_obs = $consulta->fetch(PDO::FETCH_ASSOC)) {
 			# code...
@@ -193,24 +193,8 @@ class Usuario_modelo{
 		return $this->observaciones;
 	}
 
-	public function mensaje_de_aliento(){
-		return "VAMO Ptito LA LENYN, TU PUEDES!!!";
-	}
 
 }
-
-
-////jeecutar solo cuando todo esté predido :v 
-//$person = new Usuario_modelo("../modelo/Conectar.php");
-//echo $person->set_observacion("lalalalal",12324);
-
-
-
-//$person->set_usuario("marcos","leon perez","78495689","marcos@gmail.com","Av. lirios","985633215","1234","paciente");
-//$person->actualizar_datos_paciente("78495689", 0, "20", "todas", "no tiene observaciones");
-//$person->actualizar_usuario("78495689", "Marcos", "León perez", "marquitos@gmail.com", 985633215);
-//echo "Sin errores";
-
 
 
  ?>

@@ -31,7 +31,6 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 	}
 
 
-
 }else if (isset($_POST["registrar_usuario"])) { // if para el registrooo de usuario
 	# code...
 	$nombre=$_POST["nombre"];

@@ -33,6 +33,7 @@
 <div class="row justify-content-center">
   <div class="col-sm-12 col-md-7">
     <h1 class="display-4 ">Registrar</h1> <hr class="bg-info">
+    <div id="Info" class="" hidden></div>
     <p class="text-danger small pt-0 mt-0">*Todos los campos son obligatorios</p>
     <form id="formulario" method="POST" action="controlador/Logueo_controlador.php" >
       <div class="row form-group">
@@ -92,7 +93,7 @@
       </div>
       
       <button type="submit" name="registrar_paciente" id="bton" class="btn btn-info">REGISTRAR</button>
-      <div id="Info"></div>
+      
     </form>
 
   </div>
@@ -113,21 +114,86 @@
       document.getElementById("bton").addEventListener("click", function(event){
 
         event.preventDefault()
-        $.ajax({
+
+        if (validando()) {
+          $.ajax({
               type: "POST",
               url: "controlador/Logueo_controlador.php?registrar_paciente",
               data:$("#formulario").serialize(),
               success: function(data) {
-                $('#Info').html(data);
-                console.log(data);
+                $('#Info').removeAttr("hidden");
+                $('#Info').attr("class","bg-success text-white p-3");         
+                $('#Info').html("REGISTRADO!!");       
+                //$('#Info').html(data);
                 document.getElementById('formulario').reset(); //limpia el formulario
                 setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
-                  $('#Info').html("");             
+                  $('#Info').html(""); 
+                  $('#Info').attr("hidden","");
                 }, 1500);
               }
           });
+          
+
+        }else{
+
+          $('#Info').removeAttr("hidden");
+          $('#Info').attr("class","bg-danger text-white p-3"); 
+          $('#Info').html("Inconsistencia en los datos");
+          setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
+            $('#Info').html("");
+            $('#Info').attr("hidden","");            
+          }, 1500);
+
+        }
+
+        
+
     });
+
+
+
+    function validando(){
+
+      var nombre = document.getElementById('nombre').value;
+      var apellidos = document.getElementById('apellidos').value
+      var dni = document.getElementById('dni').value
+      var direccion = document.getElementById('direccion').value
+      var celular = document.getElementById('celular').value
+
+      var email = document.getElementById('email').value;
+
+      var vacio = /^\s+$/.test(nombre);
+      var vemail = !/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/.test(email)
+      console.log("email "+vemail)
+      console.log(vacio)
+
+      if ((nombre.length !== 0 && /^\s+$/.test(nombre)) || (apellidos.length !== 0 && /^\s+$/.test(apellidos)) || (dni.length !== 0 && /^\s+$/.test(dni)) || (direccion.length !== 0 && /^\s+$/.test(direccion)) || (celular.length !== 0 && /^\s+$/.test(celular))) {
+        console.log("hay espacios escritos" + nombre)
+        return false;
+      }
+      if(nombre.length === 0 || apellidos.length === 0 || dni.length === 0 || direccion.length === 0 || celular.length === 0){
+        console.log("Los cuadros de texto están vacios")
+
+        return false
+      }
+        if(dni.length !== 8){
+          console.log("El dni es incorecto")
+          return false;
+        }
+        if(celular.length !== 9){
+          console.log("El celular está mal")
+          return false;
+        }
+      if (!/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/.test(email)) {
+        console.log("El email no es correcto")
+        return false;
+      }
+      console.log("todo perfect!!!!")
+      return true;
+
+    }
     
+
     </script>
 
   </body>

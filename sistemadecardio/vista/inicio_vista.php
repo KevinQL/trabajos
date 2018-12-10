@@ -36,16 +36,24 @@
 		    	<!--1023 × 559-->
 		      <img class="d-block w-100" height="559px" src="vista/img/img01.jpg" alt="First slide">
 		      <div class="carousel-caption d-none d-md-block text-secondary">
-			    <h5>IMAGEN DE PRUEBA</h5>
-			    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, officia officiis explicabo iste sit inventore</p>
-			  </div>
+			    <h5>CUIDA TU CORAZÓN</h5>
+			    <p>Hacer ejercicio 30 minutos al dÍa es elemental para tu corazón</p>
+			    </div>
 
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block w-100" height="559px" src="vista/img/img11.png" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block text-secondary">
+          <h5>CUIDA TU CORAZÓN</h5>
+          <p>Controla tu alimentación y cuida tu corazón</p>
+          </div>
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block w-100" height="559px" src="vista/img/img12.jpg" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block text-secondary">
+          <h5>CUIDA TU CORAZÓN</h5>
+          <p>Realiza tus controles cardiacos periódicamente</p>
+          </div>          
 		    </div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

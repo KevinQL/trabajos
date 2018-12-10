@@ -18,7 +18,6 @@
   </head>
   <body>
 
-    <div id="Info"></div>
     <!--INICIO NAVEGAR-->
 
     <?php 
@@ -32,6 +31,7 @@
       <div class="row justify-content-center">
         <div class="col-sm-12 col-md-7">
           <h1 class="display-4 ">Actualizar <?php echo $_SESSION['USUARIO_ACTUAL']; ?></h1> <hr class="bg-info">
+          <div id="Info" class="" hidden></div>
           <p class="pb-0 mb-0"></p>
           <p class="text-danger small pt-0 mt-0"></p>
 
@@ -118,15 +118,6 @@
                 <input type="text" name="alergias" id="alergias" class="form-control" value="<?php echo $datos_paciente['alergia']; ?>" >              
               </div>
             </div>
-
-            <!--
-            <div class="row form-group">
-              <label for="id_intcap" class="col col-md-4 col-form-label">ID_INTCAMP</label>
-              <div class="col-md-8">
-                <input type="text" name="id_intcap" id="id_intcap" class="form-control">              
-              </div>
-            </div>
-        	-->
   
             <div class="row form-group">
               <label for="observacion" class="col col-md-4 col-form-label">Observación</label>
@@ -163,11 +154,15 @@
 	            url: "controlador/actualizar2_controlador.php",
 	            data:$("#formulario").serialize(),
 	            success: function(data) {
-	              $('#Info').html(data);
+	              //$('#Info').html(data);
+                $('#Info').removeAttr("hidden");
+                $('#Info').attr("class","bg-success text-white p-3");         
+                $('#Info').html("ACTUALIZADO!!");
 	              console.log(data);
 	              setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
 	                $('#Info').html(""); 
-	              }, 1500);
+                  $('#Info').attr("hidden","");   
+	              }, 2500);
 	              //$dato1 = $_REQUEST['dato1'];
 	            }
 	        });

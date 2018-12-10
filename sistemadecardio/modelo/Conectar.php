@@ -10,7 +10,6 @@
 			try{
 
 				$conexion =new PDO("mysql:host=localhost; dbname=ritmocardiaco","root","");
-				//$conexion =new PDO("mysql:host=178.33.162.219; dbname=avuxtsqa_ritmocardiaco","avuxtsqa_lenyn","L3n1n3l118L3n1n3l118");
 
 				$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

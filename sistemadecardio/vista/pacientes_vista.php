@@ -55,25 +55,6 @@
         </div>
       </div>
       <?php } ?>
-<!--
-      <div class="row">
-        <div class="col-6 col-sm-6 col-md-8 pt-3">
-          <p class="text-uppercase">Paciente 2. Admerson cahuana</p>
-        </div>
-        <div class="col-6 col-sm-6 col-md-4 text-right align-self-center">
-          <button class="btn btn-primary">VER REGISTROS</button>
-        </div>
-      </div>
-
-      <div class="row align-items-center">
-        <div class="col-6 col-sm-6 col-md-8 bg-secondary pt-3">
-          <p class="text-uppercase">Paciente 3. Gabino huarcaya huaman</p>
-        </div>
-        <div class="col-6 col-sm-6 col-md-4 text-right">
-          <button class="btn btn-primary">VER REGISTROS</button>
-        </div>
-      </div>
--->
     </section>
 
 
@@ -117,7 +98,6 @@ function validar(e) {
     var codigo = $("#idpaciente").val();
     if (txtObservacion.length !== 0 && !/^\s+$/.test(txtObservacion)) { //Si no está vacio
         console.log(codigo+" tiene el mesaje: "+txtObservacion);
-        console.log();
         $.ajax({
             type: "POST",
             url: "controlador/graf_obs_controlador.php",
@@ -134,7 +114,6 @@ function validar(e) {
     }else{
       console.log("NO SE GUARDO NADA")
     }
-    //document.getElementById('observacion').innerHTML=""; // con este solo borra la priera linea. Con el de abjo borras todo
     $('#observacion').val("");
   }
 }
