@@ -72,7 +72,8 @@
 			
 			default:
 				# code...
-				$_SESSION['URL'] = "http://localhost/tesisL/sistema%20de%20cardio/vista/img/CORAZON.gif";
+				//$_SESSION['URL'] = "http://intcap.org/vista/img/CORAZON.gif";
+				$_SESSION['URL'] = "https://thingspeak.com/channels/645362/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIMEPO&yaxis=BPM";
 				echo $_SESSION['URL'];
 				break;
 		}

@@ -9,7 +9,8 @@
 
 			try{
 
-				$conexion =new PDO("mysql:host=localhost; dbname=ritmocardiaco","root","");
+				//$conexion =new PDO("mysql:host=localhost; dbname=ritmocardiaco","root","");
+				$conexion =new PDO("mysql:host=localhost; dbname=ritmocardiaco","unajma","E2qhlAfHf;8-");
 
 				$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

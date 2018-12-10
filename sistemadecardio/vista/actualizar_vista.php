@@ -30,7 +30,7 @@
 
       <div class="row justify-content-center">
         <div class="col-sm-12 col-md-7">
-          <h1 class="display-4 ">Actualizar <?php echo $_SESSION['USUARIO_ACTUAL']; ?></h1> <hr class="bg-info">
+          <h1 class="display-4 ">Actualizar</h1> <hr class="bg-info">
           <div id="Info" class="" hidden></div>
           <p class="pb-0 mb-0"></p>
           <p class="text-danger small pt-0 mt-0"></p>

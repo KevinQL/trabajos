@@ -72,10 +72,8 @@
 
 
     <div class="container">
-      <div class="row bg-dark text-white alto align-items-start">
-        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, laboriosam!</div>
-        <div class="col align-self-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, labore?</div>
-        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, consequuntur.</div>
+      <div class="row bg-dark text-white p-3 align-items-start">
+        
       </div>
     </div>
 

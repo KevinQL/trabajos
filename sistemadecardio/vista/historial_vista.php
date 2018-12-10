@@ -18,7 +18,7 @@
   </head>
   <body>
 
-    <div id="Info"></div>
+    
 
     <!--INICIO NAVEGAR-->
     <?php include 'vista/navegar.html'; ?>
@@ -28,6 +28,7 @@
       <!--///-->
 
       <h3 class="text-center mb-3 text-uppercase font-italic">HISTORIAL PACIENTE </h3>
+      
       <?php 
 
       $controla_color = 0;
@@ -41,6 +42,7 @@
 
        ?>
       <div class="row">
+        <div id="Info" hidden></div>
         <div class="col-12 pt-3 <?php echo color_varia($controla_color); ?>">
           <h3><?php echo $fila_obs['fecha']; ?></h3>
           <p class="text-justify" id="obs<?php echo $fila_obs['id']; ?>"><?php echo $fila_obs['observacion']; ?></p>
@@ -118,9 +120,13 @@
           $('#modificar').removeAttr('hidden');
           //imprimir observación en el texto
           $('#Info').html("SELECCIONADO!!");
-          setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
-            $('#Info').html(""); 
-          }, 1500);
+
+            $('#Info').removeAttr("hidden");
+            $('#Info').attr("class","col-12 bg-success text-white p-2");         
+            setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
+              $('#Info').html(""); 
+              $('#Info').attr("hidden","");
+            }, 1000);
 
         }else{
           location.href ="index.php?historial";
@@ -147,17 +153,21 @@
                          "fecha": verFecha()},
                   success: function(data) {
                     //th.value="";
+                    $('#Info').removeAttr("hidden");
+                    $('#Info').attr("class","col-12 bg-success text-white p-3");         
+
                     $('#Info').html(data);
                     setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
                       $('#Info').html(""); 
+                      $('#Info').attr("hidden","");
                       location.href ="index.php?historial";
                     }, 1500);
                   }
               });
           }else{
             console.log("NO SE GUARDO NADA")
-          }
 
+          }
           //$('#observacion_m').html("");
           //$('#modificar').attr('hidden','');
 

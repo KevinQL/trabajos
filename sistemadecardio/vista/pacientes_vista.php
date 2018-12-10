@@ -10,7 +10,13 @@
 
     <style type="text/css">
       .alto{
-        height: 300px;
+        
+      }
+      .card{
+        width: 100%;
+      }
+      .hcard{
+        margin-left: 100px;
       }
     </style>
 
@@ -58,26 +64,36 @@
     </section>
 
 
-    <div class="container">
-      <div class="row bg-dark text-white alto align-items-start">
-        
-        <div class="col  align-self-center">
-            <iframe id="cardiograma" width="450px" height="249px" src=" <?php echo $_SESSION['URL']; ?> ">
+
+
+
+
+
+    <div class="container b-0 bg-dark">
+
+
+      <div class="row text-white alto bt-0">  
+        <div class="bg-dark card center-block">
+            <iframe id="cardiograma" width="450px" height="249px" class="hcard m-3" src=" <?php echo $_SESSION['URL']; ?> ">
               <p>CARDIOGRMAA</p>
             </iframe>
-
-          </div>
-        <div class="col align-self-center">
-          <form>
-              <div class="form-group">
-              <textarea class="form-control" id="observacion" placeholder="OBSERVACIONES..." rows="7" onkeypress="validar(event)"></textarea>
-            </div>
-          </form>
-          <div id="Info"></div>
-          <input type="hidden" id="idpaciente" name="custId" value="<?php echo $_SESSION['USUARIO_ACTUAL']; ?>">
-
         </div>
+
       </div>
+
+      <div class="row">
+        <div id="Info" class="form-group bg-danger p-3" hidden></div>
+      </div>
+
+      <div class="row by-4">
+        <div class="form-group col-md-12">
+          <textarea class="form-control text-left" id="observacion" placeholder="Observaciones para el historial..." rows="3" onkeypress="validar(event)"></textarea>
+        </div>
+        <input type="hidden" id="idpaciente" name="custId" value="<?php echo $_SESSION['USUARIO_ACTUAL']; ?>">             
+      </div>
+
+
+
     </div>
 
     <!-- Optional JavaScript -->
@@ -104,17 +120,25 @@ function validar(e) {
             data: {"observacion": txtObservacion,
                    "codigo": codigo},
             success: function(data) {
-              $('#Info').html(data);
-              setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
-                $('#Info').html(""); 
-              }, 1500);
-              //$dato1 = $_REQUEST['dato1'];
+              
+              $('#Info').removeAttr("hidden");
+              $('#Info').attr("class","col-12 bg-success text-white p-3 my-2");         
+              $('#Info').html("GUARDADO!!");       
+
             }
         });
     }else{
       console.log("NO SE GUARDO NADA")
+      $('#Info').removeAttr("hidden");
+      $('#Info').attr("class","col-12 bg-danger text-white p-3 my-2"); 
+      $('#Info').html("VACIO!!");      
     }
+
     $('#observacion').val("");
+    setTimeout(function(){ // mantiene el mensaje de confirmación por 1 segundo
+      $('#Info').html("");
+      $('#Info').attr("hidden","");            
+    }, 1500);
   }
 }
 
