@@ -86,6 +86,24 @@ class Usuario_modelo{
 			return false;
 		}
 
+
+	}
+
+	public function ingresar_sistema_pv($user,$password){
+
+		$consulta = $this->db->query("SELECT * FROM usuario WHERE Correo= '$user' AND Tipo_usuario = 'admin'");
+
+		$result = false;
+		while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
+			# code...		
+			if (password_verify($password, $registro['Contrasena'])) {
+				# code...
+				$result = true;
+			}
+		}
+
+		return $result;
+//-------------	
 	}
 
 
@@ -94,8 +112,10 @@ class Usuario_modelo{
 		$sql = "INSERT INTO usuario (DNI, Nombre, Apellido, Direccion, Correo, Celular, celular2, Contrasena, Tipo_usuario) VALUES (:dni, :nombre, :apellidos, :direccion, :email, :celular,:celular2, :constrasena, :tipo_usuario)";
 
 		$consulta = $this->db->prepare($sql);
+		//encriptandooo
+		$contrasenia = password_hash($constrasena,PASSWORD_DEFAULT);
 
-		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":direccion" => $direccion, ":email" => $email, ":celular" => $celular, ":celular2" => $celular2, ":constrasena" => $constrasena, ":tipo_usuario" => $tipo_usuario));
+		$consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":direccion" => $direccion, ":email" => $email, ":celular" => $celular, ":celular2" => $celular2, ":constrasena" => $contrasenia, ":tipo_usuario" => $tipo_usuario));
 
 		//tabla datos_usuario
 		$this->db->query("INSERT INTO datos_paciente (id, peso, talla, alergia, observacion, dni_usuario) VALUES (NULL,NULL,NULL,NULL,NULL,$dni)");

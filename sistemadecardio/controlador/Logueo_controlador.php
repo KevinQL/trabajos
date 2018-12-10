@@ -16,7 +16,8 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 	require_once("../modelo/Usuario_modelo.php");
 
 	$Loguearse = new Usuario_modelo("../modelo/Conectar.php");//modificamos la dirección debido a que el fomrulario redirecciona directamente a este archivo... con el header()
-	$ingreso = $Loguearse->ingresar_sistema($usuario,$password);
+	//$ingreso = $Loguearse->ingresar_sistema($usuario,$password);
+	$ingreso = $Loguearse->ingresar_sistema_pv($usuario,$password);
 	$admin = $Loguearse->get_admin($usuario);
 	if ($ingreso) {
 		# code...
@@ -41,7 +42,7 @@ if (isset($_POST["enviar"])) { // recibe datos de inicio de sesion
 	$celular=$_POST["celular"];
 	$celular2=$_POST["celular2"];
 	$password=$_POST["password"];
-	$tipo_usuario = "admi";
+	$tipo_usuario = "admin";
 
 	require_once("../modelo/Usuario_modelo.php");
 
